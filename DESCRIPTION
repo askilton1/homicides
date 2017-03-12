@@ -1,0 +1,16 @@
+Package: homicides
+Type: Package
+Title: U.S. Homicide Reports Exploration 
+Version: 0.1.0
+Authors@R: person("Antonio", "Skilton", email = "antonio.skilton@gmail.com", role = c("aut", "cre"))
+Description: Exploration of U.S. Homicide Reports Exploration found on Kaggle for the purpose of learning to develop packages and show of data analysis techniques.
+License: MIT
+Encoding: UTF-8
+LazyData: true
+Imports: dplyr,
+    readr,
+    magrittr
+RoxygenNote: 6.0.1
+Suggests: knitr,
+    rmarkdown
+VignetteBuilder: knitr
