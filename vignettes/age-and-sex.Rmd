@@ -10,8 +10,28 @@ vignette: >
 ---
 
 ```{r, message=FALSE, warning=FALSE}
-homicides <- clean()
+library(homicides);library(tidyverse)
+```
 
-homicides
+```{r, message=FALSE, warning=FALSE}
+homicides.tb <- clean()
+
+glimpse(homicides.tb)
+```
+
+```{r, fig.height = 6}
+toplot <- homicides.tb %>% 
+  select(VictimSex, VictimAge, PerpetratorSex, PerpetratorAge) %>% 
+  filter(VictimSex %in% c("Female", "Male"),
+         PerpetratorSex %in% c("Female", "Male")) %>% 
+  mutate(PerpetratorSex = paste0("Perpetrator: ", PerpetratorSex),
+         VictimSex = paste0("Victim: ", VictimSex))
+
+ggplot(toplot, aes(x = VictimAge, y = PerpetratorAge)) +
+  geom_point(alpha = 0.01) +
+  coord_equal() +
+  theme_minimal() +
+  facet_wrap(PerpetratorSex ~ VictimSex) + 
+  labs(title = "Homicides 1980-2014")
 ```
 
